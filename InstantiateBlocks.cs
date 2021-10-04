@@ -2,15 +2,16 @@
 using UnityEngine;
 
 public class InstantiateBlocks : MonoBehaviour
-{
+{  
     [SerializeField]  private Transform[] blocks;
-   [SerializeField] private Vector3 cameraDistance = new Vector3(15, 86, 22);
+    [SerializeField] private Vector3 cameraDistance;
+    [SerializeField] private Transform _plane;
+    [SerializeField] private Transform _objectsSpawnPosition;
     private Transform player;
-    private int _blockCountX=11;
-    private int _blockCountZ=5;
-    private const float InstPositionOnY = 1.51f;
-    private float positionX = -92f;
-    private  float positionZ = -43f;
+    private float positionX;
+    private float positionZ;
+  
+  
     
     private void Start()
     {
@@ -24,22 +25,24 @@ public class InstantiateBlocks : MonoBehaviour
     }
     private void Instantiater()
     {
-        for (int i = 0; i < _blockCountX; i++)
+        double number = 1.8d;
+        for (int i = 0; i < (int)_plane.transform.localScale.x /number; i++)
         {
             InstRandom();
-            for (int j = 0; j < _blockCountZ; j++)
-            {
-                    positionZ += 17;
+            for (int j = 0; j < (int)(_plane.transform.localScale.z-1) / number; j++)
+            { 
+                positionZ += blocks[0].transform.localScale.z * 6f;
                 InstRandom();
             
             }
-            positionX += 14;
-            positionZ = -43;
+            positionX += blocks[0].transform.localScale.x * 6f;
+            positionZ = 0;
         }
     }
     private void InstRandom()
     {
-        int randomA = Random.Range(0, blocks.Length);
-        Instantiate(blocks[randomA], new Vector3(positionX, InstPositionOnY, positionZ), Quaternion.identity); 
+        int randomBlock = Random.Range(0, blocks.Length);
+        Instantiate(blocks[randomBlock], new Vector3(_objectsSpawnPosition.position.x+positionX,
+            _plane.transform.position.y+blocks[0].transform.localScale.y/2, _objectsSpawnPosition.position.z+positionZ), Quaternion.identity); 
     }
 }
