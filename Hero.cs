@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+
     
     [SerializeField] private GameObject _panel;
     [SerializeField] private List<GameObject> gameObjects = new List<GameObject>(); 

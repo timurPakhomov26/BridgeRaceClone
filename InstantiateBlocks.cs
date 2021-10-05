@@ -12,6 +12,7 @@ public class InstantiateBlocks : MonoBehaviour
     private float positionZ;
   
   
+
     
     private void Start()
     {
