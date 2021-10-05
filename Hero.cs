@@ -17,7 +17,7 @@ public class Hero : MonoBehaviour
     private float _gravityForce; 
     private int _countBlock;
     private float _positionY = 7.1f;
-    private float _positionZ = 52.8f;
+    private float _positionZ = 52.9f;
     
     
     private void Start()

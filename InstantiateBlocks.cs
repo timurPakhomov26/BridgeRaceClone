@@ -25,7 +25,7 @@ public class InstantiateBlocks : MonoBehaviour
     }
     private void Instantiater()
     {
-        double number = 1.8d;
+        double number = 1.80d;
         for (int i = 0; i < (int)_plane.transform.localScale.x /number; i++)
         {
             InstRandom();
